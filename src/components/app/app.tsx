@@ -12,15 +12,23 @@ import {
 import '../../index.css';
 import styles from './app.module.css';
 
-import { AppHeader } from '@components';
-import { Route, Routes } from 'react-router-dom';
+import {
+  AppHeader,
+  IngredientDetails,
+  Modal,
+  OrderCard,
+  OrderInfo
+} from '@components';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 const App = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const backgroundLocation = location.state?.backgroundLocation;
   return (
     <div className={styles.app}>
-      <Routes>
+      <Routes location={backgroundLocation || location}>
         <Route path='*' element={<NotFound404 />} />
         <Route path='/' element={<AppHeader />}>
           <Route index element={<ConstructorPage />} />
@@ -31,8 +39,54 @@ const App = () => {
           <Route path='/reset-password' element={<ResetPassword />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/profile/orders' element={<ProfileOrders />} />
+          <Route path='/feed/:number' element={<OrderInfo />} />
+          <Route path='/ingredients/:id' element={<IngredientDetails />} />
+          <Route path='/profile/orders/:number' element={<OrderInfo />} />
         </Route>
       </Routes>
+      {backgroundLocation && (
+        <Routes>
+          <Route
+            path='/feed/:number'
+            element={
+              <Modal
+                title='First modal'
+                onClose={() => {
+                  console.log('Close test done');
+                }}
+              >
+                <OrderInfo />
+              </Modal>
+            }
+          />
+          <Route
+            path='/ingredients/:id'
+            element={
+              <Modal
+                title='Second modal'
+                onClose={() => {
+                  console.log('Close test done');
+                }}
+              >
+                <IngredientDetails />
+              </Modal>
+            }
+          />
+          <Route
+            path='/profile/orders/:number'
+            element={
+              <Modal
+                title='Thrid modal'
+                onClose={() => {
+                  console.log('Close test done');
+                }}
+              >
+                <OrderInfo />
+              </Modal>
+            }
+          />
+        </Routes>
+      )}
     </div>
   );
 };
