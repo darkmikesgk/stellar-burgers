@@ -12,20 +12,20 @@ import {
 import '../../index.css';
 import styles from './app.module.css';
 
-import {
-  AppHeader,
-  IngredientDetails,
-  Modal,
-  OrderCard,
-  OrderInfo
-} from '@components';
+import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '../../services/store';
+import { useEffect } from 'react';
+import { fetchIngredients } from '../../services/slices/ingredients';
 
 const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
+
+  useEffect(() => {
+    dispatch(fetchIngredients());
+  }, []);
   return (
     <div className={styles.app}>
       <Routes location={backgroundLocation || location}>
