@@ -1,24 +1,50 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
+import { useDispatch, useSelector } from '../../services/store';
+import { useNavigate } from 'react-router-dom';
+import {
+  clearConstructor,
+  selectConstructorItems
+} from '../../services/slices/burgerConstructor';
+import {
+  createOrder,
+  getLoadingStatus,
+  getOrderData,
+  resetOrder
+} from '../../services/slices/order';
 
 export const BurgerConstructor: FC = () => {
-  /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
-  const constructorItems = {
-    bun: {
-      price: 0
-    },
-    ingredients: []
-  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const constructorItems = useSelector(selectConstructorItems);
+  const ingredientsId: string[] = [];
+  if (constructorItems.bun) {
+    ingredientsId.push(constructorItems.bun._id);
+  }
 
-  const orderRequest = false;
+  if (constructorItems.ingredients) {
+    ingredientsId.push(...constructorItems.ingredients.map((item) => item._id));
+  }
+  const orderRequest = useSelector(getLoadingStatus);
 
-  const orderModalData = null;
+  const orderModalData = useSelector(getOrderData);
 
   const onOrderClick = () => {
     if (!constructorItems.bun || orderRequest) return;
+
+    dispatch(createOrder(ingredientsId))
+      .then(() => {
+        dispatch(clearConstructor());
+      })
+      .catch((error) => {
+        console.error('Ошибка при создании заказа:', error);
+      });
   };
-  const closeOrderModal = () => {};
+
+  const closeOrderModal = () => {
+    dispatch(resetOrder());
+  };
 
   const price = useMemo(
     () =>
@@ -29,8 +55,6 @@ export const BurgerConstructor: FC = () => {
       ),
     [constructorItems]
   );
-
-  return null;
 
   return (
     <BurgerConstructorUI
@@ -43,3 +67,6 @@ export const BurgerConstructor: FC = () => {
     />
   );
 };
+function resetConstructor(): any {
+  throw new Error('Function not implemented.');
+}

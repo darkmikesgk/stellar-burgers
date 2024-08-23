@@ -1,12 +1,12 @@
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 import { TConstructorIngredient, TIngredient } from '@utils-types';
 
-interface IBurgerConstructor {
+interface IBurgerConstructorState {
   bun: TConstructorIngredient | null;
   ingredients: TConstructorIngredient[];
 }
 
-const initialState: IBurgerConstructor = {
+const initialState: IBurgerConstructorState = {
   bun: null,
   ingredients: []
 };
@@ -32,7 +32,14 @@ const burgerConstructorSlice = createSlice({
       state.ingredients = state.ingredients.filter(
         (ingredient) => ingredient.id !== action.payload
       );
-    }
+    },
+    changeOfPosition: (state, action) => {
+      const { i, j } = action.payload;
+      const temp = state.ingredients[i];
+      state.ingredients[i] = state.ingredients[j];
+      state.ingredients.splice(j, 1, temp);
+    },
+    clearConstructor: () => initialState
   },
   selectors: {
     selectConstructorItems: (state) => state
@@ -41,13 +48,19 @@ const burgerConstructorSlice = createSlice({
 
 const burgerConstructorReducer = burgerConstructorSlice.reducer;
 const { selectConstructorItems } = burgerConstructorSlice.selectors;
-const { addToConstructor, removeFromConstructor } =
-  burgerConstructorSlice.actions;
+const {
+  addToConstructor,
+  removeFromConstructor,
+  changeOfPosition,
+  clearConstructor
+} = burgerConstructorSlice.actions;
 
 export {
   burgerConstructorSlice,
   burgerConstructorReducer,
   selectConstructorItems,
   addToConstructor,
-  removeFromConstructor
+  removeFromConstructor,
+  changeOfPosition,
+  clearConstructor
 };
