@@ -13,15 +13,20 @@ import '../../index.css';
 import styles from './app.module.css';
 
 import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from '../../services/store';
 import { useEffect } from 'react';
 import { fetchIngredients } from '../../services/slices/ingredients';
+import { resetOrder } from '../../services/slices/order';
 
 const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const backgroundLocation = location.state?.backgroundLocation;
+  const backgroundLocation =
+    location.state && location.state.backgroundLocation;
+  const navigate = useNavigate();
+  const path = location.pathname;
+  const id = path.substring(path.lastIndexOf('/') + 1);
 
   useEffect(() => {
     dispatch(fetchIngredients());
@@ -52,7 +57,8 @@ const App = () => {
               <Modal
                 title='First modal'
                 onClose={() => {
-                  console.log('Close test done');
+                  navigate('/feed');
+                  dispatch(resetOrder());
                 }}
               >
                 <OrderInfo />
@@ -65,7 +71,8 @@ const App = () => {
               <Modal
                 title='Детали ингредиента'
                 onClose={() => {
-                  console.log('Close test done');
+                  navigate(-1);
+                  dispatch(resetOrder());
                 }}
               >
                 <IngredientDetails />
@@ -78,7 +85,8 @@ const App = () => {
               <Modal
                 title='Thrid modal'
                 onClose={() => {
-                  console.log('Close test done');
+                  navigate('/profile/orders');
+                  dispatch(resetOrder());
                 }}
               >
                 <OrderInfo />
