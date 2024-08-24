@@ -125,7 +125,7 @@ const userSlice = createSlice({
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.request = false;
-        alert('Ошибка при авторизации');
+        console.log('Ошибка при авторизации');
       })
       .addCase(registerUser.pending, (state) => {
         state.request = true;

@@ -9,26 +9,26 @@ import {
 } from '@zlden/react-developer-burger-ui-components';
 import { Link, NavLink } from 'react-router-dom';
 
-interface ICustomNavLinkProps {
-  to: string;
-  children: React.ReactNode;
-  navigationClases: string;
-}
+// interface ICustomNavLinkProps {
+//   to: string;
+//   children: React.ReactNode;
+//   navigationClases: string;
+// }
 
-const CustomNavLink: React.FC<ICustomNavLinkProps> = ({
-  to,
-  children,
-  navigationClases
-}) => (
-  <NavLink
-    to={to}
-    className={({ isActive }) =>
-      `${isActive ? styles.link_active : styles.link} ${navigationClases}`
-    }
-  >
-    {children}
-  </NavLink>
-);
+// const CustomNavLink: React.FC<ICustomNavLinkProps> = ({
+//   to,
+//   children,
+//   navigationClases
+// }) => (
+//   <NavLink
+//     to={to}
+//     className={({ isActive }) =>
+//       `${isActive ? styles.link_active : styles.link} ${navigationClases}`
+//     }
+//   >
+//     {children}
+//   </NavLink>
+// );
 
 export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
   const navLinkClases = 'text text_type_main-default ml-2 mr-10';
@@ -39,15 +39,31 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
         <div className={styles.menu_part_left}>
           <>
             <BurgerIcon type={'primary'} />
-            <CustomNavLink to='/' navigationClases={navLinkClases}>
+            <NavLink
+              to='/'
+              className={({ isActive }) => {
+                const classLink = isActive ? styles.link_active : styles.link;
+                return (
+                  classLink + ' ' + 'text text_type_main-default ml-2 mr-10'
+                );
+              }}
+            >
               Конструктор
-            </CustomNavLink>
+            </NavLink>
           </>
           <>
             <ListIcon type={'primary'} />
-            <CustomNavLink to='/feed' navigationClases={profileNavClases}>
+            <NavLink
+              to='/feed'
+              className={({ isActive }) => {
+                const classLink = isActive ? styles.link_active : styles.link;
+                return (
+                  classLink + ' ' + 'text text_type_main-default ml-2 mr-10'
+                );
+              }}
+            >
               Лента заказов
-            </CustomNavLink>
+            </NavLink>
           </>
         </div>
         <div className={styles.logo}>
@@ -57,9 +73,15 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
         </div>
         <div className={styles.link_position_last}>
           <ProfileIcon type={'primary'} />
-          <CustomNavLink to='/profile' navigationClases={profileNavClases}>
+          <NavLink
+            to='/profile'
+            className={({ isActive }) => {
+              const classLink = isActive ? styles.link_active : styles.link;
+              return classLink + ' ' + 'text text_type_main-default ml-2';
+            }}
+          >
             {userName || 'Личный кабинет'}
-          </CustomNavLink>
+          </NavLink>
         </div>
       </nav>
     </header>

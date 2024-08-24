@@ -5,8 +5,8 @@ import { TOrder } from '@utils-types';
 const fetchOrderByNumber = createAsyncThunk(
   'order/getOrderByNumber',
   async (orderNumber: number, { dispatch }) => {
-    dispatch(resetOrder());
     const order = await getOrderByNumberApi(orderNumber);
+    dispatch(resetOrder());
     return order;
   }
 );
@@ -14,8 +14,8 @@ const fetchOrderByNumber = createAsyncThunk(
 const createOrder = createAsyncThunk(
   'order/createNewBurger',
   async (ingredients: string[], { dispatch }) => {
-    dispatch(resetOrder());
     const response = await orderBurgerApi(ingredients);
+    dispatch(resetOrder());
     return response;
   }
 );
