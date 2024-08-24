@@ -181,6 +181,7 @@ export {
   logoutUser,
   registerUser,
   resetPass,
+  userSlice,
   userReducer,
   getUserData,
   getIsAuth,

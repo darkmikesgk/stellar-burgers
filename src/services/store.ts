@@ -8,13 +8,14 @@ import { burgerConstructorSlice } from './slices/burgerConstructor';
 import { ingredientSlice } from './slices/ingredients';
 import { orderSlice } from './slices/order';
 import { feedSlice } from './slices/feed';
+import { userSlice } from './slices/user';
 
-//Заменил на combineReducers, который скомбинирует в себе слайсы и будет выступать корневым редьюсером
 const rootReducer = combineReducers({
   [burgerConstructorSlice.name]: burgerConstructorSlice.reducer,
   [ingredientSlice.name]: ingredientSlice.reducer,
   [orderSlice.name]: orderSlice.reducer,
-  [feedSlice.name]: feedSlice.reducer
+  [feedSlice.name]: feedSlice.reducer,
+  [userSlice.name]: userSlice.reducer
 });
 
 const store = configureStore({

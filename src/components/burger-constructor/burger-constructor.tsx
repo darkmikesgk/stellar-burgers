@@ -13,8 +13,10 @@ import {
   getOrderData,
   resetOrder
 } from '../../services/slices/order';
+import { getUserData } from '../../services/slices/user';
 
 export const BurgerConstructor: FC = () => {
+  const user = useSelector(getUserData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const constructorItems = useSelector(selectConstructorItems);
@@ -23,7 +25,10 @@ export const BurgerConstructor: FC = () => {
 
   const onOrderClick = () => {
     if (!constructorItems.bun || orderRequest) return;
-
+    if (!user) {
+      navigate('/login', { replace: true });
+      return;
+    }
     const ingredientsId = [];
     if (constructorItems.bun) {
       ingredientsId.push(constructorItems.bun._id);

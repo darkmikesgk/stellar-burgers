@@ -18,6 +18,7 @@ import { useDispatch } from '../../services/store';
 import { useEffect } from 'react';
 import { fetchIngredients } from '../../services/slices/ingredients';
 import { resetOrder } from '../../services/slices/order';
+import { checkAuth } from '../../services/slices/user';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchIngredients());
+    dispatch(checkAuth());
   }, []);
   return (
     <div className={styles.app}>
