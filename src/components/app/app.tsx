@@ -28,6 +28,8 @@ const App = () => {
   const navigate = useNavigate();
   const path = location.pathname;
   const id = path.substring(path.lastIndexOf('/') + 1);
+  //убрать логу после отладки
+  //console.log(location);
 
   useEffect(() => {
     dispatch(fetchIngredients());
