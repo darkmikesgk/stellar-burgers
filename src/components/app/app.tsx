@@ -63,7 +63,7 @@ const App = () => {
             path='/ingredients/:id'
             element={
               <Modal
-                title='Second modal'
+                title='Детали ингредиента'
                 onClose={() => {
                   console.log('Close test done');
                 }}

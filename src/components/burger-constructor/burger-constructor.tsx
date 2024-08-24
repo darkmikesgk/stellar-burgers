@@ -18,21 +18,22 @@ export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const constructorItems = useSelector(selectConstructorItems);
-  const ingredientsId: string[] = [];
-  if (constructorItems.bun) {
-    ingredientsId.push(constructorItems.bun._id);
-  }
-
-  if (constructorItems.ingredients) {
-    ingredientsId.push(...constructorItems.ingredients.map((item) => item._id));
-  }
   const orderRequest = useSelector(getLoadingStatus);
-
   const orderModalData = useSelector(getOrderData);
 
   const onOrderClick = () => {
     if (!constructorItems.bun || orderRequest) return;
 
+    const ingredientsId = [];
+    if (constructorItems.bun) {
+      ingredientsId.push(constructorItems.bun._id);
+    }
+
+    if (constructorItems.ingredients) {
+      ingredientsId.push(
+        ...constructorItems.ingredients.map((item) => item._id)
+      );
+    }
     dispatch(createOrder(ingredientsId))
       .then(() => {
         dispatch(clearConstructor());
@@ -67,6 +68,6 @@ export const BurgerConstructor: FC = () => {
     />
   );
 };
-function resetConstructor(): any {
-  throw new Error('Function not implemented.');
-}
+// function resetConstructor(): any {
+//   throw new Error('Function not implemented.');
+// }
