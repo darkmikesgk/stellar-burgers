@@ -14,6 +14,7 @@ export const OrderInfo: FC = () => {
   useEffect(() => {
     dispatch(fetchOrderByNumber(orderId));
   }, []);
+
   const orderData = useSelector(getOrderData);
 
   const ingredients: TIngredient[] = useSelector(selectIngredients).filter(
