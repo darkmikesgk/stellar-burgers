@@ -73,6 +73,3 @@ export const BurgerConstructor: FC = () => {
     />
   );
 };
-// function resetConstructor(): any {
-//   throw new Error('Function not implemented.');
-// }

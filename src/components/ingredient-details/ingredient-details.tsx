@@ -1,13 +1,12 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Preloader } from '../ui/preloader';
 import { IngredientDetailsUI } from '../ui/ingredient-details';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from '../../services/store';
 import { selectIngredients } from '../../services/slices/ingredients';
 import { Modal } from '@components';
 
 export const IngredientDetails: FC = () => {
-  // const location = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
   const ingredientData = useSelector(selectIngredients).find(

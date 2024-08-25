@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC, useEffect } from 'react';
 import styles from './app-header.module.css';
 import { TAppHeaderUIProps } from './type';
 import {
@@ -7,32 +7,24 @@ import {
   Logo,
   ProfileIcon
 } from '@zlden/react-developer-burger-ui-components';
-import { Link, NavLink } from 'react-router-dom';
-
-// interface ICustomNavLinkProps {
-//   to: string;
-//   children: React.ReactNode;
-//   navigationClases: string;
-// }
-
-// const CustomNavLink: React.FC<ICustomNavLinkProps> = ({
-//   to,
-//   children,
-//   navigationClases
-// }) => (
-//   <NavLink
-//     to={to}
-//     className={({ isActive }) =>
-//       `${isActive ? styles.link_active : styles.link} ${navigationClases}`
-//     }
-//   >
-//     {children}
-//   </NavLink>
-// );
+import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
+import { useDispatch } from '../../../services/store';
+import { resetOrder } from '../../../services/slices/order';
 
 export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
-  const navLinkClases = 'text text_type_main-default ml-2 mr-10';
-  const profileNavClases = 'text text_type_main-default ml-2';
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const { id } = useParams();
+
+  useEffect(() => {
+    // Проверяем, что мы не находимся на странице истории заказов или на странице конкретного заказа
+    if (
+      !location.pathname.startsWith('/feed') &&
+      !location.pathname.startsWith('/profile/orders')
+    ) {
+      dispatch(resetOrder());
+    }
+  }, [location, dispatch, id]);
   return (
     <header className={styles.header}>
       <nav className={`${styles.menu} p-4`}>
