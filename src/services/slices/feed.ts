@@ -1,0 +1,62 @@
+import { getFeedsApi } from '@api';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { TOrder } from '@utils-types';
+
+const fetchFeed = createAsyncThunk(
+  'order/fetchTotal',
+  async (_, { dispatch }) => {
+    dispatch(resetFeed());
+    const data = await getFeedsApi();
+    return data;
+  }
+);
+
+interface IFeedState {
+  orders: TOrder[];
+  data: {
+    total: number;
+    totalToday: number;
+  };
+}
+
+const initialState: IFeedState = {
+  orders: [],
+  data: {
+    total: 0,
+    totalToday: 0
+  }
+};
+
+const feedSlice = createSlice({
+  name: 'feed',
+  initialState,
+  reducers: {
+    resetFeed: () => initialState
+  },
+  selectors: {
+    getFeed: (state) => state,
+    getFeedData: (state) => state.data,
+    getFeedOrders: (state) => state.orders
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchFeed.fulfilled, (state, action) => {
+      state.orders = action.payload.orders;
+      state.data.total = action.payload.total;
+      state.data.totalToday = action.payload.totalToday;
+    });
+  }
+});
+
+const feedReducer = feedSlice.reducer;
+const { getFeed, getFeedData, getFeedOrders } = feedSlice.selectors;
+const { resetFeed } = feedSlice.actions;
+
+export {
+  feedSlice,
+  fetchFeed,
+  feedReducer,
+  getFeed,
+  getFeedData,
+  getFeedOrders,
+  resetFeed
+};
