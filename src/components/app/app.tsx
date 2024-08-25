@@ -22,8 +22,7 @@ import { ProtectedRoute } from '../protectedRoute/protectedRoute';
 const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const backgroundLocation =
-    location.state && location.state?.backgroundLocation;
+  const backgroundLocation = location.state && location.state?.background;
   const navigate = useNavigate();
   const path = location.pathname;
   const id = path.substring(path.lastIndexOf('/') + 1);

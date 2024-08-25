@@ -12,7 +12,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { deleteCookie, getCookie, setCookie } from '../../utils/cookie';
 import { TUser } from '@utils-types';
 
-const getUser = createAsyncThunk('user/get', async () => getUserApi());
+const getUser = createAsyncThunk('user/get', getUserApi);
 
 const checkAuth = createAsyncThunk(
   'user/checkAuth',
@@ -39,7 +39,7 @@ const loginUser = createAsyncThunk(
   }
 );
 
-const logoutUser = createAsyncThunk('user/logout', async () => logoutApi());
+const logoutUser = createAsyncThunk('user/logout', logoutApi);
 
 const registerUser = createAsyncThunk(
   'user/register',
