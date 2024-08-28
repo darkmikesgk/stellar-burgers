@@ -8,7 +8,7 @@ import {
 } from '../../src/services/slices/orders';
 import { testOrderList } from '../test-values';
 
-describe('[Order Tests]', () => {
+describe('[orders reducer]', () => {
   test('должен обработать экшен orderRequest', () => {
     const action = { type: orderRequest.type, payload: true };
     const state = orderReducer(initialState, action);

@@ -12,20 +12,6 @@ import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
 // import { resetOrder } from '../../../services/slices/order';
 
 export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
-  // const dispatch = useDispatch();
-  // const location = useLocation();
-  // const { id } = useParams();
-
-  // useEffect(() => {
-  //   // Проверяем, что мы не находимся на странице истории заказов или на странице конкретного заказа
-  //   if (
-  //     !location.pathname.startsWith('/feed') &&
-  //     !location.pathname.startsWith('/profile/orders')
-  //   ) {
-  //     dispatch(resetOrder());
-  //   }
-  // }, [location, dispatch, id]);
-  // return ( и скобки квадратные не забудь, если что
   <header className={styles.header}>
     <nav className={`${styles.menu} p-4`}>
       <div className={styles.menu_part_left}>
@@ -74,5 +60,3 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
     </nav>
   </header>
 );
-//   );
-// };

@@ -325,7 +325,7 @@ export const testNewOrder = {
 export const testOrderList = [
   {
     _id: '66c97650119d45001b501bea',
-    ingredients: ["643d69a5c3f7b9001cfa093d", "643d69a5c3f7b9001cfa093e"],
+    ingredients: ['643d69a5c3f7b9001cfa093d', '643d69a5c3f7b9001cfa093e'],
     status: 'done',
     name: 'Флюоресцентный люминесцентный бургер',
     createdAt: '2024-08-24T05:57:36.585Z',
@@ -334,7 +334,7 @@ export const testOrderList = [
   },
   {
     _id: '66c97729119d45001b501bee',
-    ingredients: ["643d69a5c3f7b9001cfa093d", "643d69a5c3f7b9001cfa093e"],
+    ingredients: ['643d69a5c3f7b9001cfa093d', '643d69a5c3f7b9001cfa093e'],
     status: 'done',
     name: 'Флюоресцентный люминесцентный бургер',
     createdAt: '2024-08-24T06:01:13.445Z',
@@ -343,7 +343,11 @@ export const testOrderList = [
   },
   {
     _id: '66c9797b119d45001b501bf1',
-    ingredients: ["643d69a5c3f7b9001cfa093d", "643d69a5c3f7b9001cfa0941", "643d69a5c3f7b9001cfa093e"],
+    ingredients: [
+      '643d69a5c3f7b9001cfa093d',
+      '643d69a5c3f7b9001cfa0941',
+      '643d69a5c3f7b9001cfa093e'
+    ],
     status: 'done',
     name: 'Флюоресцентный люминесцентный био-марсианский бургер',
     createdAt: '2024-08-24T06:11:07.980Z',
@@ -351,3 +355,13 @@ export const testOrderList = [
     number: 50917
   }
 ];
+
+export const testUser = {
+  email: 'vany2008@yandex.ru',
+  name: 'Ivan'
+};
+
+export const testUserUpdated = {
+  email: 'darkmike537@hotmail.com',
+  name: 'Mike'
+};

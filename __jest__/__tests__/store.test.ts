@@ -8,9 +8,7 @@ import { rootReducer } from '../../src/services/store';
 
 describe('[rootReducer]', () => {
   test('Проверка корректной инициализации reducers', () => {
-    //Вызываем rootReducer с undefinded состоянием и экшеном UNKNOWN_ACTION
     const initialState = rootReducer(undefined, { type: 'UNKNOWN_ACTION' });
-    //Определяем начальное состояние
     const expectedState = {
       [burgerConstructorSlice.name]: burgerConstructorSlice.reducer(undefined, {
         type: 'UNKNOWN_ACTION'
@@ -31,7 +29,6 @@ describe('[rootReducer]', () => {
         type: 'UNKNOWN_ACTION'
       })
     };
-    //Проверяем, что начальное состояние соответствует ожидаемому
     expect(initialState).toEqual(expectedState);
   });
 });
