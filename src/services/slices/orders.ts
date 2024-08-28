@@ -7,11 +7,13 @@ const fetchOrders = createAsyncThunk('order/fetchOrders', getOrdersApi);
 interface IOrderState {
   orders: TOrder[];
   request: boolean;
+  error?: string;
 }
 
 const initialState: IOrderState = {
   orders: [],
-  request: false
+  request: false,
+  error: ''
 };
 
 const ordersSlice = createSlice({
@@ -29,6 +31,11 @@ const ordersSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchOrders.fulfilled, (state, action) => {
       state.orders = action.payload;
+      state.request = false;
+    });
+    builder.addCase(fetchOrders.rejected, (state, action) => {
+      state.error = action.error.message;
+      state.request = false;
     });
   }
 });
@@ -38,6 +45,7 @@ const { getOrders, getOrderRequest } = ordersSlice.selectors;
 const { orderRequest } = ordersSlice.actions;
 
 export {
+  initialState,
   fetchOrders,
   ordersSlice,
   orderReducer,

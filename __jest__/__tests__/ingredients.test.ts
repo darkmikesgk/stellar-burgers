@@ -7,7 +7,7 @@ import {
 } from '../../src/services/slices/ingredients';
 import { testIngredients } from '../test-values';
 
-describe('ingredientSlice', () => {
+describe('[ingredientSlice]', () => {
   test('должен обрабатывать начальное состояние', () => {
     const newState = ingredientReducer(undefined, { type: '@@INIT' });
     expect(newState).toEqual(initialState);

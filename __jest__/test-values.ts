@@ -222,3 +222,132 @@ export const testIngredients = [
     __v: 0
   }
 ];
+
+export const testOrder = {
+  data: {
+    _id: '66cf49e1119d45001b5029e1',
+    ingredients: [
+      '643d69a5c3f7b9001cfa093d',
+      '643d69a5c3f7b9001cfa0941',
+      '643d69a5c3f7b9001cfa093e'
+    ],
+    owner: '66c97636119d45001b501be8',
+    status: 'done',
+    name: 'Флюоресцентный люминесцентный био-марсианский бургер',
+    createdAt: '2024-08-28T16:01:37.414Z',
+    updatedAt: '2024-08-28T16:01:37.925Z',
+    number: 51388,
+    __v: 0,
+    isLoading: false
+  }
+};
+
+export const testNewOrder = {
+  name: 'Био-марсианский флюоресцентный люминесцентный метеоритный бургер',
+  order: {
+    ingredients: [
+      {
+        _id: '643d69a5c3f7b9001cfa093d',
+        name: 'Флюоресцентная булка R2-D3',
+        type: 'bun',
+        proteins: 44,
+        fat: 26,
+        carbohydrates: 85,
+        calories: 643,
+        price: 988,
+        image: 'https://code.s3.yandex.net/react/code/bun-01.png',
+        image_mobile: 'https://code.s3.yandex.net/react/code/bun-01-mobile.png',
+        image_large: 'https://code.s3.yandex.net/react/code/bun-01-large.png',
+        __v: 0
+      },
+      {
+        _id: '643d69a5c3f7b9001cfa093e',
+        name: 'Филе Люминесцентного тетраодонтимформа',
+        type: 'main',
+        proteins: 44,
+        fat: 26,
+        carbohydrates: 85,
+        calories: 643,
+        price: 988,
+        image: 'https://code.s3.yandex.net/react/code/meat-03.png',
+        image_mobile:
+          'https://code.s3.yandex.net/react/code/meat-03-mobile.png',
+        image_large: 'https://code.s3.yandex.net/react/code/meat-03-large.png',
+        __v: 0
+      },
+      {
+        _id: '643d69a5c3f7b9001cfa0941',
+        name: 'Биокотлета из марсианской Магнолии',
+        type: 'main',
+        proteins: 420,
+        fat: 142,
+        carbohydrates: 242,
+        calories: 4242,
+        price: 424,
+        image: 'https://code.s3.yandex.net/react/code/meat-01.png',
+        image_mobile:
+          'https://code.s3.yandex.net/react/code/meat-01-mobile.png',
+        image_large: 'https://code.s3.yandex.net/react/code/meat-01-large.png',
+        __v: 0
+      },
+      {
+        _id: '643d69a5c3f7b9001cfa0940',
+        name: 'Говяжий метеорит (отбивная)',
+        type: 'main',
+        proteins: 800,
+        fat: 800,
+        carbohydrates: 300,
+        calories: 2674,
+        price: 3000,
+        image: 'https://code.s3.yandex.net/react/code/meat-04.png',
+        image_mobile:
+          'https://code.s3.yandex.net/react/code/meat-04-mobile.png',
+        image_large: 'https://code.s3.yandex.net/react/code/meat-04-large.png',
+        __v: 0
+      }
+    ],
+    _id: '66cf4f3b119d45001b5029f7',
+    owner: {
+      name: 'DarkMike',
+      email: 'vany2008@yandex.ru',
+      createdAt: '2024-08-24T05:57:10.085Z',
+      updatedAt: '2024-08-25T07:22:59.729Z'
+    },
+    status: 'done',
+    createdAt: '2024-08-28T16:24:27.205Z',
+    updatedAt: '2024-08-28T16:24:27.685Z',
+    number: 51391,
+    price: 5400,
+    isLoading: false
+  }
+};
+
+export const testOrderList = [
+  {
+    _id: '66c97650119d45001b501bea',
+    ingredients: ["643d69a5c3f7b9001cfa093d", "643d69a5c3f7b9001cfa093e"],
+    status: 'done',
+    name: 'Флюоресцентный люминесцентный бургер',
+    createdAt: '2024-08-24T05:57:36.585Z',
+    updatedAt: '2024-08-24T05:57:37.185Z',
+    number: 50913
+  },
+  {
+    _id: '66c97729119d45001b501bee',
+    ingredients: ["643d69a5c3f7b9001cfa093d", "643d69a5c3f7b9001cfa093e"],
+    status: 'done',
+    name: 'Флюоресцентный люминесцентный бургер',
+    createdAt: '2024-08-24T06:01:13.445Z',
+    updatedAt: '2024-08-24T06:01:13.973Z',
+    number: 50915
+  },
+  {
+    _id: '66c9797b119d45001b501bf1',
+    ingredients: ["643d69a5c3f7b9001cfa093d", "643d69a5c3f7b9001cfa0941", "643d69a5c3f7b9001cfa093e"],
+    status: 'done',
+    name: 'Флюоресцентный люминесцентный био-марсианский бургер',
+    createdAt: '2024-08-24T06:11:07.980Z',
+    updatedAt: '2024-08-24T06:11:08.511Z',
+    number: 50917
+  }
+];

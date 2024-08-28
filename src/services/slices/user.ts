@@ -174,6 +174,7 @@ const {
 const { authChecked } = userSlice.actions;
 
 export {
+  initialState,
   getUser,
   checkAuth,
   updateUser,
