@@ -12,13 +12,13 @@ import { testFeed } from '../test-values';
 
 describe('[FeedSlice]', () => {
   describe('Проверка обработки экшнов', () => {
-    test('Очистка ленты', () => {
-      const stateAfterReset = feedReducer(testFeed, resetFeed());
-      expect(stateAfterReset.orders).toEqual([]);
-    });
     test('Инициализация состояния', () => {
       const state = feedReducer(undefined, { type: '@@INIT' });
       expect(state).toEqual(initialState);
+    });
+    test('Очистка ленты', () => {
+      const stateAfterReset = feedReducer(testFeed, resetFeed());
+      expect(stateAfterReset.orders).toEqual([]);
     });
     test('Получение полного состояния', () => {
       const state = { feed: testFeed };
@@ -48,6 +48,17 @@ describe('[FeedSlice]', () => {
       expect(stateAfterFetch.orders).toEqual(testFeed.orders);
       expect(stateAfterFetch.total).toBe(testFeed.total);
       expect(stateAfterFetch.totalToday).toBe(testFeed.totalToday);
+    });
+
+    test('Обработка ошибок при получении списка заказов', async () => {
+      const error = new Error('Failed to fetch');
+      const stateAfterFetch = feedReducer(initialState, {
+        type: fetchFeed.rejected.type,
+        error
+      });
+      expect(stateAfterFetch.orders).toEqual([]);
+      expect(stateAfterFetch.total).toBe(0);
+      expect(stateAfterFetch.totalToday).toBe(0);
     });
   });
 });
