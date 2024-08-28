@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1724867121104" clover="3.2.0">
-  <project timestamp="1724867121104" name="All files">
-    <metrics statements="1194" coveredstatements="954" conditionals="56" coveredconditionals="53" methods="49" coveredmethods="29" elements="1299" coveredelements="1036" complexity="0" loc="1194" ncloc="1194" packages="4" files="10" classes="10"/>
+<coverage generated="1724877151180" clover="3.2.0">
+  <project timestamp="1724877151180" name="All files">
+    <metrics statements="1198" coveredstatements="958" conditionals="56" coveredconditionals="53" methods="49" coveredmethods="29" elements="1303" coveredelements="1040" complexity="0" loc="1198" ncloc="1198" packages="4" files="10" classes="10"/>
     <package name="__jest__">
-      <metrics statements="363" coveredstatements="363" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="367" coveredstatements="367" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="test-values.ts" path="C:\Users\DarkM\Desktop\Yandex_Praktikum\stellar-burgers\__jest__\test-values.ts">
-        <metrics statements="363" coveredstatements="363" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="367" coveredstatements="367" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -369,6 +369,10 @@
         <line num="361" count="1" type="stmt"/>
         <line num="362" count="1" type="stmt"/>
         <line num="363" count="1" type="stmt"/>
+        <line num="364" count="1" type="stmt"/>
+        <line num="365" count="1" type="stmt"/>
+        <line num="366" count="1" type="stmt"/>
+        <line num="367" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.services">

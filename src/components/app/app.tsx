@@ -107,7 +107,7 @@ const App = () => {
                 title={`#0${id}`}
                 onClose={() => {
                   navigate('/feed');
-                  dispatch(resetOrder()); //*
+                  dispatch(resetOrder());
                 }}
               >
                 <OrderInfo />
@@ -121,7 +121,6 @@ const App = () => {
                 title={'Детали ингредиента'}
                 onClose={() => {
                   navigate(-1);
-                  dispatch(resetOrder()); //*
                 }}
               >
                 <IngredientDetails />
@@ -135,6 +134,7 @@ const App = () => {
                 title={`#0${id}`}
                 onClose={() => {
                   navigate(-1);
+                  dispatch(resetOrder());
                 }}
               >
                 <OrderInfo />
