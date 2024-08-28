@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1724877151180" clover="3.2.0">
-  <project timestamp="1724877151180" name="All files">
-    <metrics statements="1198" coveredstatements="958" conditionals="56" coveredconditionals="53" methods="49" coveredmethods="29" elements="1303" coveredelements="1040" complexity="0" loc="1198" ncloc="1198" packages="4" files="10" classes="10"/>
+<coverage generated="1724887440765" clover="3.2.0">
+  <project timestamp="1724887440765" name="All files">
+    <metrics statements="1199" coveredstatements="959" conditionals="56" coveredconditionals="53" methods="49" coveredmethods="29" elements="1304" coveredelements="1041" complexity="0" loc="1199" ncloc="1199" packages="4" files="10" classes="10"/>
     <package name="__jest__">
       <metrics statements="367" coveredstatements="367" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="test-values.ts" path="C:\Users\DarkM\Desktop\Yandex_Praktikum\stellar-burgers\__jest__\test-values.ts">
@@ -417,9 +417,9 @@
       </file>
     </package>
     <package name="src.services.slices">
-      <metrics statements="514" coveredstatements="469" conditionals="56" coveredconditionals="53" methods="30" coveredmethods="29"/>
+      <metrics statements="515" coveredstatements="470" conditionals="56" coveredconditionals="53" methods="30" coveredmethods="29"/>
       <file name="burgerConstructor.ts" path="C:\Users\DarkM\Desktop\Yandex_Praktikum\stellar-burgers\src\services\slices\burgerConstructor.ts">
-        <metrics statements="67" coveredstatements="67" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="5"/>
+        <metrics statements="68" coveredstatements="68" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -487,6 +487,7 @@
         <line num="65" count="1" type="stmt"/>
         <line num="66" count="1" type="stmt"/>
         <line num="67" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
       </file>
       <file name="feed.ts" path="C:\Users\DarkM\Desktop\Yandex_Praktikum\stellar-burgers\src\services\slices\feed.ts">
         <metrics statements="61" coveredstatements="57" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="5"/>

@@ -57,6 +57,7 @@ const {
 } = burgerConstructorSlice.actions;
 
 export {
+  initialState,
   burgerConstructorSlice,
   burgerConstructorReducer,
   selectConstructorItems,

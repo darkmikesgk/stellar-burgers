@@ -3,7 +3,8 @@ import {
   addToConstructor,
   removeFromConstructor,
   changeOfPosition,
-  clearConstructor
+  clearConstructor,
+  initialState
 } from '../../src/services/slices/burgerConstructor';
 import {
   testReadyBurger,
@@ -15,11 +16,6 @@ import {
 jest.mock('uuid', () => ({ v4: () => '0000-0000-0000-0000' }));
 
 describe('[burgerConstructor reducer]', () => {
-  const initialState = {
-    bun: null,
-    ingredients: []
-  };
-
   afterAll(() => {
     jest.restoreAllMocks();
   });
@@ -34,8 +30,8 @@ describe('[burgerConstructor reducer]', () => {
 
   test('Замена булочки в конструкторе', () => {
     const initialStateWithBun = {
-      bun: { ...testNewBun, id: '0000-0000-0000-0000' },
-      ingredients: []
+      ...initialState,
+      bun: { ...testNewBun, id: '0000-0000-0000-0000' }
     };
     const action = addToConstructor(testNewBun);
     const state = burgerConstructorReducer(initialStateWithBun, action);
@@ -74,7 +70,7 @@ describe('[burgerConstructor reducer]', () => {
 
   test('Удаление ингредиента из конструктора', () => {
     const initialStateWithIngredients = {
-      bun: null,
+      ...initialState,
       ingredients: [{ ...testNewIngredient, id: '0000-0000-0000-0000' }]
     };
 
@@ -86,7 +82,7 @@ describe('[burgerConstructor reducer]', () => {
 
   test('Изменение порядка ингредиентов в конструкторе', () => {
     const initialStateWithIngredients = {
-      bun: null,
+      ...initialState,
       ingredients: testChangeOfPositionIngredients.ingredients.map(
         (ingredient, index) => ({
           ...ingredient,

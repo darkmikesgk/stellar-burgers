@@ -1,8 +1,21 @@
 import tokensJson from '../fixtures/tokens.json';
-import { setCookie, deleteCookie, getCookie } from '../../src/utils/cookie';
+import { setCookie, deleteCookie } from '../../src/utils/cookie';
+
+//const testUrl = 'http://localhost:4000';
+
+const SELECTORS = {
+  modal: '[data-cy=modal]',
+  closeButton: '[data-cy=close-button]',
+  addButton: (dataCy: string) => `[data-cy=${dataCy}] button`,
+  submitOrder: '[data-cy=submit-order]',
+  constructorItem: '[data-cy=constructor-item]',
+  bun: '[data-cy=bun]',
+  constructorElement: '[data-cy=constructor-element]'
+};
 
 beforeEach(() => {
-  cy.visit('http://localhost:4000/');
+  //cy.visit(testUrl);
+  cy.visit('/');
   cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients.json' });
 });
 
@@ -12,7 +25,8 @@ describe('[Конструктор бургера]', () => {
     expectedText: string,
     selector: string
   ) => {
-    cy.get(`[data-cy=${dataCy}] button`).contains('Добавить').click();
+    cy.get(SELECTORS.addButton(dataCy)).as('addButton');
+    cy.get('@addButton').contains('Добавить').click();
     cy.get(selector)
       .should('have.length', 1)
       .last()
@@ -23,7 +37,7 @@ describe('[Конструктор бургера]', () => {
     addItemToConstructor(
       '643d69a5c3f7b9001cfa093d',
       'Флюоресцентная булка R2-D3',
-      '[data-cy=bun]'
+      SELECTORS.bun
     );
   });
 
@@ -31,7 +45,7 @@ describe('[Конструктор бургера]', () => {
     addItemToConstructor(
       '643d69a5c3f7b9001cfa0947',
       'Плоды Фалленианского дерева',
-      '[data-cy=constructor-element]'
+      SELECTORS.constructorElement
     );
   });
 
@@ -39,34 +53,36 @@ describe('[Конструктор бургера]', () => {
     addItemToConstructor(
       '643d69a5c3f7b9001cfa0945',
       'Соус с шипами Антарианского плоскоходца',
-      '[data-cy=constructor-element]'
+      SELECTORS.constructorElement
     );
   });
 });
 
 describe('[Модальные окна]', () => {
   beforeEach(() => {
-    cy.get('[data-cy=643d69a5c3f7b9001cfa0949]').click();
+    cy.get('[data-cy=643d69a5c3f7b9001cfa0949]').as('modalTrigger').click();
+    cy.get(SELECTORS.modal, { timeout: 1000 }).as('modal');
   });
 
   it('Открытие модального окна', () => {
-    cy.get('[data-cy=modal]')
+    cy.get('@modal')
       .should('exist')
       .and('contain.text', 'Мини-салат Экзо-Плантаго');
   });
 
   it('Закрытие модального окна при клике на крестик.', () => {
-    cy.get('[data-cy=modal]')
+    cy.get('@modal')
       .should('exist')
-      .find('[data-cy=close-button]')
+      .find(SELECTORS.closeButton)
+      .as('closeButton')
       .click();
-    cy.get('[data-cy=modal]').should('not.exist');
+    cy.get('@modal').should('not.exist');
   });
 
   it('Закрытие модального окна при клике на оверлей.', () => {
-    cy.get('[data-cy=modal]').should('exist');
+    cy.get('@modal').should('exist');
     cy.get('body').click(0, 0);
-    cy.get('[data-cy=modal]').should('not.exist');
+    cy.get('@modal').should('not.exist');
   });
 });
 
@@ -79,30 +95,28 @@ describe('[Создание заказа]', () => {
   });
 
   it('Проверка оформления заказа с последующим открытием модального окна', () => {
-    cy.get(`[data-cy=643d69a5c3f7b9001cfa093c] button`)
-      .contains('Добавить')
-      .click();
-    cy.get(`[data-cy=643d69a5c3f7b9001cfa0941] button`)
-      .contains('Добавить')
-      .click();
-    cy.get(`[data-cy=643d69a5c3f7b9001cfa0947] button`)
-      .contains('Добавить')
-      .click();
-    cy.get(`[data-cy=643d69a5c3f7b9001cfa0945] button`)
-      .contains('Добавить')
-      .click();
+    const addItem = (dataCy: string) => {
+      cy.get(SELECTORS.addButton(dataCy)).as('addButton');
+      cy.get('@addButton').contains('Добавить').click();
+    };
 
-    cy.get('[data-cy=submit-order]').contains('Оформить заказ').click();
+    addItem('643d69a5c3f7b9001cfa093c');
+    addItem('643d69a5c3f7b9001cfa0941');
+    addItem('643d69a5c3f7b9001cfa0947');
+    addItem('643d69a5c3f7b9001cfa0945');
 
-    cy.get('[data-cy=modal]')
+    cy.get(SELECTORS.submitOrder).contains('Оформить заказ').click();
+
+    cy.get(SELECTORS.modal)
+      .as('modal')
       .should('exist')
       .and('contain.text', 'Ваш заказ начали готовить')
       .find('[data-cy=order-id]')
       .should('have.text', '51420');
 
-    cy.get('[data-cy=modal]').find('[data-cy=close-button]').click();
-    cy.get('[data-cy=modal]').should('not.exist');
-    cy.get('[data-cy=constructor-item]').should('have.length', 0);
+    cy.get('@modal').find(SELECTORS.closeButton).click();
+    cy.get('@modal').should('not.exist');
+    cy.get(SELECTORS.constructorItem).should('have.length', 0);
   });
 
   after(() => {
