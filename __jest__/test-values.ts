@@ -12,7 +12,7 @@ export const testReadyBurger = {
     type: 'bun',
     __v: 0,
     _id: '643d69a5c3f7b9001cfa093c',
-    id: 'unique-id-1'
+    id: '61f7bd51-a07a-4608-836c-2d6cdcbfe92e'
   },
   ingredients: [
     {
@@ -28,7 +28,7 @@ export const testReadyBurger = {
       type: 'main',
       __v: 0,
       _id: '643d69a5c3f7b9001cfa094a',
-      id: 'unique-id-2'
+      id: '872cdad1-ded3-4abd-bec8-ba0abaf0fe58'
     },
     {
       calories: 986,
@@ -45,7 +45,7 @@ export const testReadyBurger = {
       type: 'main',
       __v: 0,
       _id: '643d69a5c3f7b9001cfa0946',
-      id: 'unique-id-3'
+      id: '8358920c-8719-47df-9f1f-21cbc59a7a17'
     }
   ]
 };
@@ -62,8 +62,7 @@ export const testNewBun = {
   proteins: 44,
   type: 'bun',
   __v: 0,
-  _id: '643d69a5c3f7b9001cfa093d',
-  id: 'unique-id-4'
+  _id: '643d69a5c3f7b9001cfa093d'
 };
 
 export const testNewIngredient = {
@@ -78,8 +77,7 @@ export const testNewIngredient = {
   proteins: 44,
   type: 'main',
   __v: 0,
-  _id: '643d69a5c3f7b9001cfa093e',
-  id: 'unique-id-5'
+  _id: '643d69a5c3f7b9001cfa093e'
 };
 
 export const testChangeOfPositionIngredients = {
@@ -96,7 +94,7 @@ export const testChangeOfPositionIngredients = {
     type: 'bun',
     __v: 0,
     _id: '643d69a5c3f7b9001cfa093c',
-    id: 'unique-id-1'
+    id: '61f7bd51-a07a-4608-836c-2d6cdcbfe92e'
   },
   ingredients: [
     {
@@ -114,7 +112,7 @@ export const testChangeOfPositionIngredients = {
       type: 'main',
       __v: 0,
       _id: '643d69a5c3f7b9001cfa0946',
-      id: 'unique-id-3'
+      id: '8358920c-8719-47df-9f1f-21cbc59a7a17'
     },
     {
       calories: 3377,
@@ -129,7 +127,53 @@ export const testChangeOfPositionIngredients = {
       type: 'main',
       __v: 0,
       _id: '643d69a5c3f7b9001cfa094a',
-      id: 'unique-id-2'
+      id: '872cdad1-ded3-4abd-bec8-ba0abaf0fe58'
     }
   ]
+};
+
+export const testFeed = {
+  orders: [
+    {
+      _id: '66cef93a119d45001b502897',
+      ingredients: ['643d69a5c3f7b9001cfa093d', '643d69a5c3f7b9001cfa093e'],
+      status: 'done',
+      name: 'Флюоресцентный люминесцентный бургер',
+      createdAt: '2024-08-28T10:17:30.247Z',
+      updatedAt: '2024-08-28T10:17:30.771Z',
+      number: 51376
+    },
+    {
+      _id: '66cef91e119d45001b502896',
+      ingredients: [
+        '643d69a5c3f7b9001cfa093d',
+        '643d69a5c3f7b9001cfa093d',
+        '643d69a5c3f7b9001cfa0945',
+        '643d69a5c3f7b9001cfa0947'
+      ],
+      status: 'done',
+      name: 'Флюоресцентный фалленианский антарианский бургер',
+      createdAt: '2024-08-28T10:17:02.990Z',
+      updatedAt: '2024-08-28T10:17:03.561Z',
+      number: 51375
+    },
+    {
+      _id: '66cef53a119d45001b50287f',
+      ingredients: [
+        '643d69a5c3f7b9001cfa093d',
+        '643d69a5c3f7b9001cfa093f',
+        '643d69a5c3f7b9001cfa0946',
+        '643d69a5c3f7b9001cfa094a',
+        '643d69a5c3f7b9001cfa0944',
+        '643d69a5c3f7b9001cfa093d'
+      ],
+      status: 'done',
+      name: 'Флюоресцентный астероидный бессмертный минеральный традиционный-галактический бургер',
+      createdAt: '2024-08-28T10:00:26.293Z',
+      updatedAt: '2024-08-28T10:00:27.573Z',
+      number: 51374
+    }
+  ],
+  total: 51002,
+  totalToday: 77
 };

@@ -13,18 +13,14 @@ const fetchFeed = createAsyncThunk(
 
 interface IFeedState {
   orders: TOrder[];
-  data: {
-    total: number;
-    totalToday: number;
-  };
+  total: number;
+  totalToday: number;
 }
 
-const initialState: IFeedState = {
+export const initialState: IFeedState = {
   orders: [],
-  data: {
-    total: 0,
-    totalToday: 0
-  }
+  total: 0,
+  totalToday: 0
 };
 
 const feedSlice = createSlice({
@@ -35,14 +31,17 @@ const feedSlice = createSlice({
   },
   selectors: {
     getFeed: (state) => state,
-    getFeedData: (state) => state.data,
+    getFeedData: (state) => ({
+      total: state.total,
+      totalToday: state.totalToday
+    }),
     getFeedOrders: (state) => state.orders
   },
   extraReducers: (builder) => {
     builder.addCase(fetchFeed.fulfilled, (state, action) => {
       state.orders = action.payload.orders;
-      state.data.total = action.payload.total;
-      state.data.totalToday = action.payload.totalToday;
+      state.total = action.payload.total;
+      state.totalToday = action.payload.totalToday;
     });
   }
 });
