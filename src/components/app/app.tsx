@@ -18,6 +18,7 @@ import { useEffect } from 'react';
 import { fetchIngredients } from '../../services/slices/ingredients';
 import { checkAuth } from '../../services/slices/user';
 import { ProtectedRoute } from '../protectedRoute/protectedRoute';
+import { resetOrder } from '../../services/slices/order';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -106,6 +107,7 @@ const App = () => {
                 title={`#0${id}`}
                 onClose={() => {
                   navigate('/feed');
+                  dispatch(resetOrder()); //*
                 }}
               >
                 <OrderInfo />
@@ -119,6 +121,7 @@ const App = () => {
                 title={'Детали ингредиента'}
                 onClose={() => {
                   navigate(-1);
+                  dispatch(resetOrder()); //*
                 }}
               >
                 <IngredientDetails />
