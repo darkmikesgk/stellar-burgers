@@ -72,6 +72,7 @@ const { getOrderData, getLoadingStatus } = orderSlice.selectors;
 const { resetOrder } = orderSlice.actions;
 
 export {
+  initialState,
   fetchOrderByNumber,
   createOrder,
   orderSlice,

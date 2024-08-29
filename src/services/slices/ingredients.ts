@@ -45,6 +45,7 @@ const ingredientReducer = ingredientSlice.reducer;
 const { selectIngredients, selectIsLoading } = ingredientSlice.selectors;
 
 export {
+  initialState,
   ingredientSlice,
   ingredientReducer,
   selectIngredients,
